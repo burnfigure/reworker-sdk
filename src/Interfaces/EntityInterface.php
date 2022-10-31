@@ -4,5 +4,5 @@ namespace Reworker\Interfaces;
 
 interface EntityInterface
 {
-    public function getResponse(?string $callback_class = null): ?array;
+    public function getResponse(callable $callback = null): ?array;
 }

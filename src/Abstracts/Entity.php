@@ -6,17 +6,16 @@ abstract class Entity
 {
     protected array $response;
 
-    protected function runCallBack(?string $callback_class = null): void
+    protected function runCallBack(callable $callback = null): void
     {
-        if(!is_null($callback_class)) {
-            $callback = new $callback_class($this->response);
-            $callback->run();
+        if(!is_null($callback)) {
+            $callback($this->response);
         }
     }
 
-    public function getResponse(?string $callback_class = null): ?array
+    public function getResponse(callable $callback = null): ?array
     {
-        $this->runCallBack($callback_class);
+        $this->runCallBack($callback);
         return $this->response ?? null;
     }
 
